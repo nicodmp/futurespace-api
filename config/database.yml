@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  user: solution
+  password: 123456
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: futurespace-api_development
+
+test:
+  <<: *default
+  database: futurespace-api_test
+
+production:
+  <<: *default
+  database: futurespace-api_production
+  username: futurespace-api
+  password: <%= ENV['FUTURESPACE-API_DATABASE_PASSWORD'] %>
